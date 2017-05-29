@@ -1,0 +1,36 @@
+name: nginx-rtmp
+version: "1.0"
+summary: NGINX-based Media Streaming Server
+description: "For more details please visit our site: https://github.com/daker/nginx-rtmp-snap"
+
+grade: devel
+confinement: devmode
+
+apps:
+    nginx-service:
+        command: bin/nginx.sh start
+        daemon: simple
+
+parts:
+    wrappers:
+        plugin: dump 
+        source: ./extras
+    nginx:
+        plugin: autotools
+        source: http://nginx.org/download/nginx-1.10.3.tar.gz
+        build-packages:
+            - libpcre3-dev 
+            - libssl-dev
+        configflags: [
+            "--conf-path=/snap/nginx-rtmp/current/etc/nginx/nginx.conf",
+            "--error-log-path=/var/snap/nginx-rtmp/current/nginx/log/error.log",
+            "--http-log-path=/var/snap/nginx-rtmp/current/nginx/log/access.log",
+            "--pid-path=/var/snap/nginx-rtmp/current/nginx/run/nginx.pid",
+            "--with-http_ssl_module",
+            "--add-module=../../../nginx-rtmp-module"]
+        organize:
+            sbin: bin
+        prime:
+            - -html
+            - -var
+            - -snap
