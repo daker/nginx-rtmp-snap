@@ -10,16 +10,17 @@ apps:
     nginx-service:
         command: bin/nginx.sh start
         daemon: simple
+        plugs: [network-bind]
 
 parts:
     wrappers:
-        plugin: dump 
+        plugin: dump
         source: ./extras
     nginx:
         plugin: autotools
         source: https://nginx.org/download/nginx-1.13.0.tar.gz
         build-packages:
-            - libpcre3-dev 
+            - libpcre3-dev
             - libssl-dev
         configflags: [
             "--conf-path=/snap/nginx-rtmp/current/etc/nginx/nginx.conf",
