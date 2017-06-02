@@ -24,9 +24,9 @@ parts:
             - libssl-dev
         configflags: [
             "--conf-path=/snap/nginx-rtmp/current/etc/nginx/nginx.conf",
-            "--error-log-path=/var/snap/nginx-rtmp/current/nginx/log/error.log",
-            "--http-log-path=/var/snap/nginx-rtmp/current/nginx/log/access.log",
-            "--pid-path=/var/snap/nginx-rtmp/current/nginx/run/nginx.pid",
+            "--error-log-path=/snap/nginx-rtmp/current/etc/nginx/log/error.log",
+            "--http-log-path=/snap/nginx-rtmp/current/etc/nginx/log/access.log",
+            "--pid-path=/snap/nginx-rtmp/current/etc/nginx/run/nginx.pid",
             "--with-http_ssl_module",
             "--add-module=../../../nginx-rtmp-module"]
         organize:
