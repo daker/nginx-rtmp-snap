@@ -8,7 +8,7 @@ confinement: devmode
 
 apps:
     nginx-service:
-        command: bin/nginx.sh start
+        command: bin/nginx
         daemon: simple
         plugs: [network-bind]
 
