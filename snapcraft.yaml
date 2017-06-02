@@ -23,10 +23,10 @@ parts:
             - libpcre3-dev
             - libssl-dev
         configflags: [
-            "--conf-path=/snap/nginx-rtmp/current/etc/nginx/nginx.conf",
-            "--error-log-path=/snap/nginx-rtmp/current/etc/nginx/log/error.log",
-            "--http-log-path=/snap/nginx-rtmp/current/etc/nginx/log/access.log",
-            "--pid-path=/snap/nginx-rtmp/current/etc/nginx/run/nginx.pid",
+            "--conf-path=$SNAP_USER_COMMON/etc/nginx/nginx.conf",
+            "--error-log-path=$SNAP_USER_COMMON/etc/nginx/log/error.log",
+            "--http-log-path=$SNAP_USER_COMMON/etc/nginx/log/access.log",
+            "--pid-path=$SNAP_USER_COMMON/etc/nginx/run/nginx.pid",
             "--with-http_ssl_module",
             "--add-module=../../../nginx-rtmp-module"]
         organize:
