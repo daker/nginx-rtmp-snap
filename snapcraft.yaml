@@ -7,10 +7,17 @@ grade: devel
 confinement: devmode
 
 apps:
-    nginx-service:
-        command: bin/nginx
-        daemon: simple
+    start:
         plugs: [network-bind]
+        command: bin/start.sh
+
+    reload:
+        plugs: [network-bind]
+        command: bin/reload.sh
+
+    stop:
+        plugs: [network-bind]
+        command: bin/stop.sh
 
 parts:
     wrappers:
@@ -22,16 +29,8 @@ parts:
         build-packages:
             - libpcre3-dev
             - libssl-dev
-        configflags: [
-            "--conf-path=/snap/nginx-rtmp/current/etc/nginx/nginx.conf",
-            "--error-log-path=/snap/nginx-rtmp/current/etc/nginx/log/error.log",
-            "--http-log-path=/snap/nginx-rtmp/current/etc/nginx/log/access.log",
-            "--pid-path=/snap/nginx-rtmp/current/etc/nginx/run/nginx.pid",
-            "--with-http_ssl_module",
-            "--add-module=../../../nginx-rtmp-module"]
+        configflags:
+            - --with-http_ssl_module
+            - --add-module=../../../nginx-rtmp-module
         organize:
             sbin: bin
-        prime:
-            - -html
-            - -var
-            - -snap
