@@ -3,13 +3,13 @@
 set -e
 
 cd "$SNAP"
-#echo $PWD
+echo $PWD
 cp -rf conf $SNAP_DATA/
 cp -rf html $SNAP_DATA/
 cp -rf logs $SNAP_DATA/
 
 cd "$SNAP_DATA"
-#echo $PWD
+echo $PWD
 
 mkdir -p client_body_temp
 mkdir -p fastcgi_temp

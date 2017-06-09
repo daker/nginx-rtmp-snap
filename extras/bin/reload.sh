@@ -22,7 +22,5 @@ chown nobody proxy_temp
 chown nobody scgi_temp
 chown nobody uwsgi_temp
 
-#kill -9 `cat $SNAP_DATA/logs/nginx.pid`
-
 $SNAP/bin/nginx -s reload -c $SNAP_USER_DATA/nginx.conf "$@"
 echo 'INFO: nginx reloaded'
